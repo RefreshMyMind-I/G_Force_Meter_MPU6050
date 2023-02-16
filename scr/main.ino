@@ -1,9 +1,13 @@
+// added libs
+
 #include <GyverOLED.h>
 #include "bitmap.h"
 #include <Adafruit_MPU6050.h>
 #include <Adafruit_Sensor.h>
 #include <Wire.h>
 
+
+// Varriable decleration
 double lpfx, lpfy, lpfz;
 double gx, gy;
 GyverOLED<SSD1306_128x64, OLED_BUFFER> oled;
@@ -17,7 +21,7 @@ void setup() {
   oled.init();
   oled.clear();
   oled.update();
-
+  // setting parameter for mpu6050
   mpu.setAccelerometerRange(MPU6050_RANGE_8_G);
   mpu.setGyroRange(MPU6050_RANGE_500_DEG);
   mpu.setFilterBandwidth(MPU6050_BAND_21_HZ);
@@ -83,9 +87,6 @@ void loop() {
   if (gx <= -0.8) {
     oled.drawBitmap(0, 0, bottom4, 128, 64);
   }
-
-
-
 
   oled.update();
   oled.clear();
